@@ -7,11 +7,11 @@
  * @left: Pointer to the left child node
  * @right: Pointer to the right child node
  */
-binary_tree_t *binary_tree_node(binary_tree_t *parent, int value)
+int binary_tree_is_leaf(const binary_tree_t *node)
 {
-        binary_tree_t *new_node;
-        new_node = malloc(sizeof(binary_tree_t));
-        new_node->n = value;
-        new_node->parent = parent;
-        return new_node;
+	if (node == NULL)
+		return 0;
+	if (node->left == NULL && node->right == NULL && node->parent)
+		return 1;
+	return 0;
 }

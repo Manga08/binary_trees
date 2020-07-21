@@ -7,11 +7,11 @@
  * @left: Pointer to the left child node
  * @right: Pointer to the right child node
  */
-binary_tree_t *binary_tree_node(binary_tree_t *parent, int value)
+void binary_tree_postorder(const binary_tree_t *tree, void (*func)(int))
 {
-        binary_tree_t *new_node;
-        new_node = malloc(sizeof(binary_tree_t));
-        new_node->n = value;
-        new_node->parent = parent;
-        return new_node;
+        if (tree == NULL)
+		return;
+	binary_tree_postorder(tree->left, func);
+	binary_tree_postorder(tree->right, func);
+	func(tree->n);
 }

@@ -7,16 +7,32 @@
  * @left: Pointer to the left child node
  * @right: Pointer to the right child node
  */
-int height(struct node* node)
+int score(binary_tree_t *node)
 {
+	int lr = 0;
+	int lf = 0;
+	printf("entre\n");
 	if (node == NULL)
-		return 0;
-
-	return 1 + height(node->left);
+		return (0);
+	if (node->left == NULL && node->right == NULL)
+		return (1);
+	if (node->left)
+		lf = 1 + score(node->left);
+	else
+		lf = 0;
+	if (node->right)
+		lr = 1 + score(node->right);
+	else
+		lr = 0;
+	if (lf > lr)
+		return (lf);
+	else
+		return (lr);
 }
 
 int binary_tree_balance(const binary_tree_t *tree)
 {
-        
-        return cnt;
+	printf("no pude entrar \n");
+	printf("muestrame esto\n");
+        return (score(tree->left) - score(tree->right));
 }
